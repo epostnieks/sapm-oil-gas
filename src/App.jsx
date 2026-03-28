@@ -384,9 +384,6 @@ export default function PSTOilGasDashboard() {
           </div>
         )}
 
-          </div>
-        )}
-
         {/* THRESHOLDS TAB */}
         {tab === 'thresholds' && (
           <div>
