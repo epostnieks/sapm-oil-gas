@@ -32,32 +32,31 @@ const CHANNELS = [
 ];
 
 const CROSS_DOMAIN = [
-        { domain:"ERCOT (Texas Grid)", beta:"2,053", type:"Institutional", pi:"$2.3B" },
-        { domain:"PFAS (Forever Chemicals)", beta:"35.2", type:"Impossibility", pi:"$4.1B" },
-        { domain:"Monoculture Agriculture", beta:"8.6", type:"Impossibility", pi:"$52B" },
-        { domain:"Opioid Ecosystem", beta:"10.2", type:"Institutional", pi:"~$35B" },
-        { domain:"Commercial Real Estate", beta:"8.4", type:"Institutional", pi:"$12-15B" },
-        { domain:"Persistent Org. Pollutants", beta:"8.4", type:"Institutional", pi:"$3.50T" },
-        { domain:"Gene Drives", beta:"12.4", type:"Impossibility", pi:"$3.50T" },
-        { domain:"Big Tech / Platform", beta:"7.4", type:"Institutional", pi:"$158B" },
-        { domain:"Frontier AI", beta:"7.4", type:"Impossibility", pi:"" },
-        { domain:"Palm Oil", beta:"6.2", type:"Institutional", pi:"$67B" },
-        { domain:"Oil & Gas Extraction", beta:"6.2", type:"Institutional", pi:"$3.5T" },
-        { domain:"Gambling (Commercial)", beta:"6.3", type:"Institutional", pi:"$44.2B" },
-        { domain:"PBM Rebate System", beta:"6.3", type:"Institutional", pi:"$27.6B" },
-        { domain:"Coal Combustion", beta:"6.1", type:"Institutional", pi:"" },
-        { domain:"Aviation Emissions", beta:"4.6", type:"Institutional", pi:"$1.007T" },
-        { domain:"Algorithmic Pricing", beta:"4.2", type:"Institutional", pi:"$39.5B" },
-        { domain:"Gig Economy Platforms", beta:"4.2", type:"Institutional", pi:"" },
-        { domain:"Global Fisheries", beta:"4.72", type:"Institutional", pi:"" },
-        { domain:"UPF / Ultra-Processed Food", beta:"6.2", type:"Institutional", pi:"" },
-        { domain:"Deep-Sea Mining", beta:"4.7", type:"Impossibility", pi:"" },
-        { domain:"Arms Exports", beta:"2.4", type:"Institutional", pi:"$293B" },
-        { domain:"Antimicrobial Resistance", beta:"2.1", type:"Impossibility", pi:"" },
-        { domain:"Nuclear Energy", beta:"0.7", type:"Impossibility", pi:"" },
-        { domain:"Orbital Debris (LEO)", beta:"2,053", type:"Impossibility", pi:"$293B" },
-        { domain:"WMD Capability Diffusion", beta:"—", type:"Impossibility", pi:"" },
-        { domain:"Bitcoin (PoW)", beta:"5.0", type:"Impossibility", pi:"" },
+        { domain:"Algorithmic Pricing", beta:"5.28", type:"Institutional", pi:"$39.5B", key:"sapm-algorithmic-pricing" },
+        { domain:"Arms Exports", beta:"2.54", type:"Institutional", pi:"$293B", key:"sapm-arms-exports" },
+        { domain:"Aviation Emissions", beta:"4.91", type:"Institutional", pi:"$1.007T", key:"sapm-aviation-emissions" },
+        { domain:"Big Tech Monopoly", beta:"9.60", type:"Institutional", pi:"$158B", key:"sapm-big-tech-platform-monopoly" },
+        { domain:"Cement (Calcination Floor)", beta:"6.55", type:"Impossibility", pi:"$330B", key:"sapm-cement-calcination-floor" },
+        { domain:"Coal Combustion", beta:"6.96", type:"Institutional", pi:"$990B", key:"sapm-coal" },
+        { domain:"CRE Urban Hollowing", beta:"11.0", type:"Institutional", pi:"$13.5B", key:"sapm-cre-urban-hollowing" },
+        { domain:"Deep-Sea Mining (Abyssal Floor)", beta:"8.45", type:"Impossibility", pi:"$4.8B", key:"sapm-dsm-abyssal-recovery-floor" },
+        { domain:"Global Fisheries", beta:"4.77", type:"Institutional", pi:"$37.6B", key:"sapm-fisheries-no-impossibility" },
+        { domain:"Gambling Industry", beta:"7.19", type:"Institutional", pi:"$44.2B", key:"sapm-gambling" },
+        { domain:"Gene Drives (Ecological Ratchet)", beta:"42.5", type:"Impossibility", pi:"$2.8B", key:"sapm-gene-drives" },
+        { domain:"Gig Economy", beta:"4.56", type:"Institutional", pi:"$62.0B", key:"sapm-gig-economy" },
+        { domain:"Oil & Gas Extraction", beta:"6.58", type:"Institutional", pi:"$3.50T", key:"sapm-oil-gas" },
+        { domain:"Opioid Industry", beta:"12.5", type:"Institutional", pi:"$24.0B", key:"sapm-opioids" },
+        { domain:"Orbital Debris (Kessler Ceiling)", beta:"5,066", type:"Impossibility", pi:"$293B", key:"sapm-orbital-debris" },
+        { domain:"Palm Oil Deforestation", beta:"8.86", type:"Institutional", pi:"$67B", key:"sapm-palm-oil" },
+        { domain:"Pharmacy Benefit Managers", beta:"35.4", type:"Institutional", pi:"$27.6B", key:"sapm-pbm-rebate" },
+        { domain:"POPs Beyond PFAS (Inheritance Floor)", beta:"6.08", type:"Impossibility", pi:"$70B", key:"sapm-pops-beyond-pfas" },
+        { domain:"For-Profit Student Loans", beta:"4.80", type:"Institutional", pi:"$46.8B", key:"sapm-student-loans-forprofit" },
+        { domain:"Tobacco Industry", beta:"6.80", type:"Institutional", pi:"$965B", key:"sapm-tobacco" },
+        { domain:"Topsoil Erosion (Pedogenesis Floor)", beta:"5.52", type:"Impossibility", pi:"$380B", key:"sapm-topsoil-erosion" },
+        { domain:"Ultra-Processed Food", beta:"6.11", type:"Institutional", pi:"$293B", key:"sapm-upf-full" },
+        { domain:"Ultra-Processed Food (No Impossibility)", beta:"6.11", type:"Institutional", pi:"$293B", key:"sapm-upf-no-impossibility" },
+        { domain:"Water Privatization", beta:"3.16", type:"Institutional", pi:"$246B", key:"sapm-water-privatization" },
+        { domain:"WMD/LAWS (Capability Diffusion Ceiling)", beta:"79,512", type:"Impossibility", pi:"$85B", key:"sapm-wmd-capability-diffusion-ceiling" },
 ];
 
 const HIGHLIGHTS = [
@@ -276,9 +275,9 @@ export default function PSTOilGasDashboard() {
               </thead>
               <tbody>
                 {[...CROSS_DOMAIN].sort((a,b) => (parseFloat(b.beta)||0) - (parseFloat(a.beta)||0)).map((d,i) => (
-                  <tr key={i} style={{background: d.domain===META.title ? 'rgba(34,197,94,0.08)' : i%2===0 ? C.panel : C.bg}}>
-                    <td style={{padding:'8px 12px',color: d.domain===META.title ? '#22C55E' : C.text,fontFamily:C.serif,fontSize:14,borderBottom:`1px solid ${C.border}`}}>
-                      {d.domain===META.title ? '▶ ' : ''}{d.domain}
+                  <tr key={i} style={{background: d.key==='sapm-oil-gas' ? 'rgba(34,197,94,0.08)' : i%2===0 ? C.panel : C.bg}}>
+                    <td style={{padding:'8px 12px',color: d.key==='sapm-oil-gas' ? '#22C55E' : C.text,fontFamily:C.serif,fontSize:14,borderBottom:`1px solid ${C.border}`}}>
+                      {d.key==='sapm-oil-gas' ? '▶ ' : ''}{d.domain}
                     </td>
                     <td style={{padding:'8px 12px',color: parseFloat(d.beta)>10 ? C.crimson : C.gold,textAlign:'right',fontWeight:700,borderBottom:`1px solid ${C.border}`}}>{d.beta}</td>
                     <td style={{padding:'8px 12px',color:C.muted,borderBottom:`1px solid ${C.border}`}}>{d.type}</td>
