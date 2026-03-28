@@ -1,0 +1,138 @@
+{
+  "key": "sapm-oil-gas",
+  "meta_fill": {
+    "pi": "$3.50T",
+    "psa": "-$18.2T",
+    "mu": "0.161",
+    "kappa": "1.18"
+  },
+  "psf": {
+    "pi_c": 420.0,
+    "pi_p": 3500.0,
+    "w_c": 21700.0,
+    "kappa": 1.18
+  },
+  "monte_carlo": {
+    "mean": 6.22,
+    "ci_lo": 5.1,
+    "ci_hi": 7.6,
+    "pct_hw": 99.9,
+    "n_draws": 10000,
+    "channels": [
+      {
+        "name": "Climate damages (CO2)",
+        "dist": "triangular",
+        "lo": 12000,
+        "hi": 21000,
+        "mode": 16100
+      },
+      {
+        "name": "Methane externalities",
+        "dist": "triangular",
+        "lo": 1500,
+        "hi": 3500,
+        "mode": 2400
+      },
+      {
+        "name": "Air quality mortality",
+        "dist": "triangular",
+        "lo": 850,
+        "hi": 1800,
+        "mode": 1250
+      },
+      {
+        "name": "Ecosystem destruction",
+        "dist": "log-normal",
+        "lo": 400,
+        "hi": 1200,
+        "mode": 720
+      },
+      {
+        "name": "Governance capture",
+        "dist": "triangular",
+        "lo": 600,
+        "hi": 1400,
+        "mode": 960
+      },
+      {
+        "name": "Stranded asset risk",
+        "dist": "uniform",
+        "lo": 300,
+        "hi": 900,
+        "mode": 570
+      }
+    ]
+  },
+  "thresholds": [
+    {
+      "domain": "Global EV sales >50% of new vehicles",
+      "year": 2030,
+      "confidence": "Medium",
+      "status": "20% in 2024; IEA STEPS projects 40% by 2030, APS projects 55%",
+      "crossed": false
+    },
+    {
+      "domain": "Peak global oil demand",
+      "year": 2028,
+      "confidence": "Medium",
+      "status": "IEA: peak in advanced economies already; global peak 2025-2030 range",
+      "crossed": false
+    },
+    {
+      "domain": "Carbon price >$100/tCO2 in majority of oil producing economies",
+      "year": 2035,
+      "confidence": "Low",
+      "status": "EU ETS ~\u20ac65; no carbon price in U.S., Gulf states, Russia",
+      "crossed": false
+    },
+    {
+      "domain": "Methane super-emitter detection saturation",
+      "year": 2026,
+      "confidence": "High",
+      "status": "MethaneSAT + GHGSat now detecting >90% of major O&G super-emitters",
+      "crossed": true
+    },
+    {
+      "domain": "IRA clean energy investment crossover (>oil sector capex)",
+      "year": 2027,
+      "confidence": "Medium",
+      "status": "IRA-driven clean energy capex $300B+ in 2024 vs oil upstream ~$500B",
+      "crossed": false
+    }
+  ],
+  "axioms": {
+    "type": "institutional",
+    "items": [
+      {
+        "id": "I1",
+        "name": "Internal knowledge / external doubt manufacturing",
+        "description": "ExxonMobil and other majors possessed accurate internal climate models from the 1970s while funding external doubt campaigns \u2014 creating the largest documented information asymmetry in regulatory history."
+      },
+      {
+        "id": "I2",
+        "name": "Fossil fuel subsidy architecture",
+        "description": "$7T/year in explicit and implicit fossil fuel subsidies globally (IMF 2023) constitutes a permanent structural distortion that prevents competitive energy alternatives from displacing oil and gas on market terms."
+      },
+      {
+        "id": "I3",
+        "name": "Petro-state sovereign capture",
+        "description": "Oil-exporting nations' fiscal dependency on petroleum revenue creates sovereign-level incentives to block climate governance through OPEC coordination, UNFCCC obstruction, and domestic subsidy maintenance."
+      }
+    ]
+  },
+  "methods": {
+    "welfare_function": "W computed via SCC ($190/tCO2) on 37 GtCO2eq annual oil and gas lifecycle emissions plus GWP-20 methane premium plus VSL-weighted air pollution mortality plus ecosystem service loss from spills and extraction.",
+    "cooperative_baseline": "Essential oil use (petrochemicals, aviation, lubricants, non-electrifiable industry) at $420B/year revenue; combustion oil eliminated by electrification of transport and heat using already cost-competitive renewables.",
+    "key_sources": [
+      "IEA, World Energy Outlook 2024",
+      "IMF, Fossil Fuel Subsidies (2023)",
+      "Supran & Oreskes, Assessing ExxonMobil's climate communications (2017, 2023)",
+      "IPCC AR6 WG3, Energy systems chapter (2022)"
+    ],
+    "falsification": [
+      "F1: Demonstrate that the Social Cost of Carbon should be below $50/tCO2 given AR6 climate sensitivity range and any plausible discount rate above 1%.",
+      "F2: Show that EV electrification of transport cannot achieve equivalent mobility services at lower total cost than petroleum-powered vehicles in a major economy by 2030.",
+      "F3: Demonstrate that methane leakage rates from oil and gas operations are below 0.5% of production globally, refuting the EPA and OGCI measurement consensus."
+    ]
+  }
+}

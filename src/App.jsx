@@ -12,8 +12,8 @@ import { BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, R
 const META = {
   title: "Oil and Gas Extraction",
   subtitle: "System Welfare Cost of Global Fossil Fuel Extraction",
-  beta: "6.2",
-  ci: "5.1–7.6",
+  beta: "6.58",
+  ci: "5.38–7.97",
   pi: "$3.50T",
   psa: "−$18.2T",
   mu: "0.1613 (16.1%)",
@@ -69,23 +69,24 @@ const HIGHLIGHTS = [
         "EV penetration race: China 90%+ NEV by 2034; Europe 95% by 2041; U.S. delayed to 50% by 2039 (tariffs + tax credit elimination).",
 ];
 
-const PSF_PARAMS = {pi_c:564.5,pi_p:3500.0,w_c:5250.0,kappa:0.89};
-const PSF_DATA = [{pi:56.45,w:5110.04},{pi:236.19,w:5191.55},{pi:415.93,w:5238.03},{pi:595.68,w:5249.47},{pi:775.42,w:5225.88},{pi:955.16,w:5167.25},{pi:1134.9,w:5073.58},{pi:1314.64,w:4944.88},{pi:1494.39,w:4781.13},{pi:1674.13,w:4582.36},{pi:1853.87,w:4348.55},{pi:2033.61,w:4079.71},{pi:2213.35,w:3775.83},{pi:2393.1,w:3436.9},{pi:2572.84,w:3062.95},{pi:2752.58,w:2653.96},{pi:2932.32,w:2209.94},{pi:3112.06,w:1730.88},{pi:3291.81,w:1216.76},{pi:3471.55,w:667.63},{pi:3651.29,w:83.47},{pi:3831.03,w:-535.73},{pi:4010.77,w:-1189.97},{pi:4190.52,w:-1879.28},{pi:4370.26,w:-2603.58},{pi:4550.0,w:-3362.93}];
+const PSF_PARAMS = {pi_c:420.0,pi_p:3500.0,w_c:21700.0,kappa:1.18};
+const PSF_DATA = [{pi:42.0,w:21314.32},{pi:192.27,w:21560.02},{pi:342.53,w:21683.8},{pi:492.8,w:21685.69},{pi:643.07,w:21565.69},{pi:793.33,w:21323.79},{pi:943.6,w:20959.99},{pi:1093.87,w:20474.28},{pi:1244.13,w:19866.71},{pi:1394.4,w:19137.2},{pi:1544.67,w:18285.79},{pi:1694.93,w:17312.54},{pi:1845.2,w:16217.33},{pi:1995.47,w:15000.22},{pi:2145.73,w:13661.3},{pi:2296.0,w:12200.39},{pi:2446.27,w:10617.57},{pi:2596.53,w:8912.97},{pi:2746.8,w:7086.36},{pi:2897.07,w:5137.84},{pi:3047.33,w:3067.57},{pi:3197.6,w:875.25},{pi:3347.87,w:-1438.96},{pi:3498.13,w:-3874.92},{pi:3648.4,w:-6432.93},{pi:3798.67,w:-9112.85},{pi:3948.93,w:-11914.48},{pi:4099.2,w:-14838.2},{pi:4249.47,w:-17883.82},{pi:4399.73,w:-21051.12},{pi:4550.0,w:-24340.54}];
 
-const MC_PARAMS = {n_draws:10000,mean:6.2,ci_lo:4.3,ci_hi:9.1,pct_hw:97.1,channels:[{name:"CO₂ and methane climate forcing",dist:"log-normal",lo:2.6,hi:4.4},{name:"Air pollution mortality (PM2.5, NOx, SOx)",dist:"log-normal",lo:1.0,hi:2.2},{name:"Methane leakage and flaring",dist:"triangular",lo:0.6,hi:1.4},{name:"Stranded asset and transition risk",dist:"uniform",lo:0.3,hi:0.9}]};
-const MC_DATA = [{bin:"1.4",count:4},{bin:"1.9",count:14},{bin:"2.4",count:39},{bin:"2.9",count:93},{bin:"3.4",count:195},{bin:"3.9",count:361},{bin:"4.4",count:590},{bin:"4.9",count:852},{bin:"5.4",count:1089},{bin:"5.9",count:1231},{bin:"6.5",count:1231},{bin:"7.0",count:1089},{bin:"7.5",count:852},{bin:"8.0",count:590},{bin:"8.5",count:361},{bin:"9.0",count:195},{bin:"9.5",count:93},{bin:"10.0",count:39},{bin:"10.5",count:14},{bin:"11.0",count:4}];
+const MC_HIST = [{bin:"4.93",lo:4.9267,hi:5.0012,count:37},{bin:"5.00",lo:5.0012,hi:5.0757,count:51},{bin:"5.08",lo:5.0757,hi:5.1501,count:56},{bin:"5.15",lo:5.1501,hi:5.2246,count:82},{bin:"5.22",lo:5.2246,hi:5.2991,count:92},{bin:"5.30",lo:5.2991,hi:5.3736,count:119},{bin:"5.37",lo:5.3736,hi:5.4481,count:149},{bin:"5.45",lo:5.4481,hi:5.5225,count:179},{bin:"5.52",lo:5.5225,hi:5.5970,count:195},{bin:"5.60",lo:5.5970,hi:5.6715,count:203},{bin:"5.67",lo:5.6715,hi:5.7460,count:238},{bin:"5.75",lo:5.7460,hi:5.8204,count:269},{bin:"5.82",lo:5.8204,hi:5.8949,count:295},{bin:"5.89",lo:5.8949,hi:5.9694,count:298},{bin:"5.97",lo:5.9694,hi:6.0439,count:331},{bin:"6.04",lo:6.0439,hi:6.1183,count:361},{bin:"6.12",lo:6.1183,hi:6.1928,count:336},{bin:"6.19",lo:6.1928,hi:6.2673,count:373},{bin:"6.27",lo:6.2673,hi:6.3418,count:353},{bin:"6.34",lo:6.3418,hi:6.4163,count:354},{bin:"6.42",lo:6.4163,hi:6.4907,count:383},{bin:"6.49",lo:6.4907,hi:6.5652,count:343},{bin:"6.57",lo:6.5652,hi:6.6397,count:357},{bin:"6.64",lo:6.6397,hi:6.7142,count:348},{bin:"6.71",lo:6.7142,hi:6.7886,count:355},{bin:"6.79",lo:6.7886,hi:6.8631,count:337},{bin:"6.86",lo:6.8631,hi:6.9376,count:343},{bin:"6.94",lo:6.9376,hi:7.0121,count:262},{bin:"7.01",lo:7.0121,hi:7.0866,count:271},{bin:"7.09",lo:7.0866,hi:7.1610,count:276},{bin:"7.16",lo:7.1610,hi:7.2355,count:240},{bin:"7.24",lo:7.2355,hi:7.3100,count:224},{bin:"7.31",lo:7.3100,hi:7.3845,count:206},{bin:"7.38",lo:7.3845,hi:7.4589,count:212},{bin:"7.46",lo:7.4589,hi:7.5334,count:190},{bin:"7.53",lo:7.5334,hi:7.6079,count:161},{bin:"7.61",lo:7.6079,hi:7.6824,count:121},{bin:"7.68",lo:7.6824,hi:7.7568,count:145},{bin:"7.76",lo:7.7568,hi:7.8313,count:109},{bin:"7.83",lo:7.8313,hi:7.9058,count:108},{bin:"7.91",lo:7.9058,hi:7.9803,count:102},{bin:"7.98",lo:7.9803,hi:8.0548,count:76},{bin:"8.05",lo:8.0548,hi:8.1292,count:93},{bin:"8.13",lo:8.1292,hi:8.2037,count:61},{bin:"8.20",lo:8.2037,hi:8.2782,count:61},{bin:"8.28",lo:8.2782,hi:8.3527,count:46},{bin:"8.35",lo:8.3527,hi:8.4271,count:37},{bin:"8.43",lo:8.4271,hi:8.5016,count:27},{bin:"8.50",lo:8.5016,hi:8.5761,count:16},{bin:"8.58",lo:8.5761,hi:8.6506,count:19}];
+const MC_STATS = {mean:6.5825,median:6.5315,ci_lo:5.3801,ci_hi:7.9704,pct_hw:100.0,pct_above_3:100.0,pct_above_5:99.1,min:4.6113,max:9.2207,n_draws:10000,seed:42};
+const MC_CHANNELS = [{name:"Climate damages (CO2)",mean:16355.21,p5:13360.16,p50:16280.21,p95:19544.81,share:0.7134},{name:"Methane externalities",mean:2463.43,p5:1799.36,p50:2443.90,p95:3163.53,share:0.1075},{name:"Air quality mortality",mean:1302.75,p5:990.19,p50:1293.02,p95:1639.85,share:0.0568},{name:"Ecosystem destruction",mean:1217.91,p5:897.43,p50:1196.16,p95:1606.19,share:0.0531},{name:"Governance capture",mean:985.40,p5:721.52,p50:976.34,p95:1264.86,share:0.0430},{name:"Stranded asset risk",mean:600.98,p5:330.49,p50:600.59,p95:870.30,share:0.0262}];
+const MC_WELFARE = {mean:22925.70,ci_lo:19801.82,ci_hi:26229.00};
 
-const THRESHOLDS = [{domain:"IEA Net Zero: no new oil and gas fields",year:2021,status:"IEA NZE 2021: no new oil/gas fields needed post-2021 for 1.5°C; industry approved $570B in new upstream in 2023 alone (Rystad)",confidence:"High",crossed:true},{domain:"COP28 fossil fuel transition agreement",year:2023,status:"COP28 UAE Consensus (Dec 2023): first COP decision referencing ‘transitioning away from fossil fuels in energy systems’; non-binding",confidence:"High",crossed:true},{domain:"Methane pledge implementation",year:2030,status:"Global Methane Pledge (155 countries): reduce methane 30% by 2030; IEA estimates 75% of oil/gas methane is abatable at net-zero cost; actual reductions: <2% by 2024",confidence:"Medium",crossed:false},{domain:"Peak oil demand",year:2028,status:"IEA WEO 2023: oil demand peaks before 2030 in all scenarios; EV sales 18% of global car sales in 2023 (14M units)",confidence:"Medium",crossed:false}];
+const THRESHOLDS = [{domain:"Global EV sales >50% of new vehicles",year:2030,confidence:"Medium",status:"20% in 2024; IEA STEPS projects 40% by 2030, APS projects 55%",crossed:false},{domain:"Peak global oil demand",year:2028,confidence:"Medium",status:"IEA: peak in advanced economies already; global peak 2025-2030 range",crossed:false},{domain:"Carbon price >$100/tCO2 in majority of oil producing economies",year:2035,confidence:"Low",status:"EU ETS ~€65; no carbon price in U.S., Gulf states, Russia",crossed:false},{domain:"Methane super-emitter detection saturation",year:2026,confidence:"High",status:"MethaneSAT + GHGSat now detecting >90% of major O&G super-emitters",crossed:true},{domain:"IRA clean energy investment crossover (>oil sector capex)",year:2027,confidence:"Medium",status:"IRA-driven clean energy capex $300B+ in 2024 vs oil upstream ~$500B",crossed:false}];
 
-const AXIOMS = {type:"institutional",items:[{id:"I1",name:"Petrostrate Fiscal Dependence",description:"Oil rents constitute >40% of GDP for 15 nations (World Bank 2023); Saudi Arabia, Russia, UAE, Iraq, Kuwait derive 60–90% of government revenue from hydrocarbons, creating existential state opposition to transition within OPEC+ framework."},{id:"I2",name:"Lobbying and Disinformation Architecture",description:"Oil and gas industry spent $124.4M on US lobbying in 2023 (OpenSecrets); ExxonMobil knew about climate change by 1977 (Supran et al. 2023, Science) but funded $39M in climate denial organizations 1998–2014 (Brulle 2014, Climatic Change)."},{id:"I3",name:"Infrastructure Lock-in",description:"Global fossil fuel infrastructure has $28T in embedded capital (IEA 2023) with 30–50 year design lifespans; pipelines, refineries, LNG terminals create path-dependent demand that resists substitution even when renewables achieve cost parity."}]};
+const AXIOMS = {type:"institutional",items:[{id:"I1",name:"Internal knowledge / external doubt manufacturing",description:"ExxonMobil and other majors possessed accurate internal climate models from the 1970s while funding external doubt campaigns — creating the largest documented information asymmetry in regulatory history."},{id:"I2",name:"Fossil fuel subsidy architecture",description:"$7T/year in explicit and implicit fossil fuel subsidies globally (IMF 2023) constitutes a permanent structural distortion that prevents competitive energy alternatives from displacing oil and gas on market terms."},{id:"I3",name:"Petro-state sovereign capture",description:"Oil-exporting nations\' fiscal dependency on petroleum revenue creates sovereign-level incentives to block climate governance through OPEC coordination, UNFCCC obstruction, and domestic subsidy maintenance."}]};
 
 const METHODS_DATA = {
-  welfare_function: "W = −[SCC × 36.8 GtCO₂-equiv/yr + Health_costs + Ecosystem_damage]. Oil and gas combustion produces 21.3 GtCO₂/yr (IEA 2023); at SCC $185/tCO₂ = $3.94T/yr in unpriced climate damage alone. Adding 4.8M premature deaths from fossil fuel air pollution (Vohra et al. 2021) at EPA VSL = $2.2T additional.",
-  cooperative_baseline: "IEA Net Zero pathway: oil demand falls 75% by 2050, gas 55%; cooperative Π_C = $564.5B reflects essential petrochemical feedstock and managed decline trajectory with full externality pricing.",
-  falsification: ["If renewable energy achieves >80% of electricity and green hydrogen displaces industrial gas by 2035, managed decline is occurring.","If carbon pricing reaches >$150/tCO₂ globally, externality internalization undermines the institutional failure claim.","If Monte Carlo robustness for β_W > 1 falls below 80%, point estimate is unreliable.","If climate sensitivity proves lower than IPCC AR6 best estimate (3°C), the SCC-based welfare function overstates damages."],
-  key_sources: ["IEA (2023). World Energy Outlook 2023. International Energy Agency.","Supran, G., Rahmstorf, S., & Oreskes, N. (2023). Assessing ExxonMobil’s global warming projections. Science 379(6628).","IMF (2023). Fossil Fuel Subsidies Data: $7T including externalities. IMF WP 2023/169.","Vohra, K. et al. (2021). Global mortality from outdoor fine particle pollution generated by fossil fuel combustion. Environmental Research 195.","IPCC (2022). Climate Change 2022: Mitigation of Climate Change. AR6 WGIII."]
+  welfare_function: "W computed via SCC ($190/tCO2) on 37 GtCO2eq annual oil and gas lifecycle emissions plus GWP-20 methane premium plus VSL-weighted air pollution mortality plus ecosystem service loss from spills and extraction.",
+  cooperative_baseline: "Essential oil use (petrochemicals, aviation, lubricants, non-electrifiable industry) at $420B/year revenue; combustion oil eliminated by electrification of transport and heat using already cost-competitive renewables.",
+  falsification: ["F1: Demonstrate that the Social Cost of Carbon should be below $50/tCO2 given AR6 climate sensitivity range and any plausible discount rate above 1%.","F2: Show that EV electrification of transport cannot achieve equivalent mobility services at lower total cost than petroleum-powered vehicles in a major economy by 2030.","F3: Demonstrate that methane leakage rates from oil and gas operations are below 0.5% of production globally, refuting the EPA and OGCI measurement consensus."],
+  key_sources: ["IEA, World Energy Outlook 2024","IMF, Fossil Fuel Subsidies (2023)","Supran & Oreskes, Assessing ExxonMobil\'s climate communications (2017, 2023)","IPCC AR6 WG3, Energy systems chapter (2022)"]
 };
-
 
 // ─── Color palette ───────────────────────────────────────────────────────────
 const C = {
@@ -331,51 +332,58 @@ export default function PSTOilGasDashboard() {
             </div>
           </div>
         )}
-
         {/* MONTE CARLO TAB */}
         {tab === 'monte-carlo' && (
           <div>
-            <SectionTitle>Monte Carlo Robustness — {MC_PARAMS.n_draws.toLocaleString()} Draws</SectionTitle>
+            <SectionTitle>Monte Carlo Simulation — {MC_STATS.n_draws.toLocaleString()} Draws (seed={MC_STATS.seed})</SectionTitle>
             <div style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:4,padding:16,marginBottom:16}}>
-              <ResponsiveContainer width="100%" height={280}>
-                <BarChart data={MC_DATA} margin={{top:10,right:30,left:20,bottom:10}}>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={MC_HIST} margin={{top:10,right:30,left:20,bottom:30}}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                  <XAxis dataKey="bin" stroke={C.muted} tick={{fontFamily:C.mono,fontSize:10}} />
+                  <XAxis dataKey="bin" stroke={C.muted} tick={{fontFamily:C.mono,fontSize:9}} angle={-45} textAnchor="end" interval={4} />
                   <YAxis stroke={C.muted} tick={{fontFamily:C.mono,fontSize:11}} />
-                  <Tooltip contentStyle={{background:C.panel,border:`1px solid ${C.border}`,fontFamily:C.mono,fontSize:12,color:C.text}} />
+                  <Tooltip contentStyle={{background:C.panel,border:`1px solid ${C.border}`,fontFamily:C.mono,fontSize:12,color:C.text}} formatter={(v)=>[v,'Draws']} />
                   <Bar dataKey="count" fill={C.gold} />
-                  <ReferenceLine x={MC_PARAMS.mean.toFixed(1)} stroke={C.crimson} strokeDasharray="5 5" label={{value:'β̄='+MC_PARAMS.mean,fill:C.crimson,fontFamily:C.mono,fontSize:11}} />
+                  <ReferenceLine x={MC_STATS.mean.toFixed(2)} stroke={C.crimson} strokeWidth={2} strokeDasharray="5 5" label={{value:'μ='+MC_STATS.mean.toFixed(2),fill:C.crimson,fontFamily:C.mono,fontSize:11,position:'top'}} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
             <div style={{display:'flex',gap:12,flexWrap:'wrap',marginBottom:16}}>
-              <Metric label="MEAN β_W" value={MC_PARAMS.mean} color={C.gold} />
-              <Metric label="90% CI" value={'['+MC_PARAMS.ci_lo+', '+MC_PARAMS.ci_hi+']'} color={C.muted} />
-              <Metric label="% HOLLOW WIN" value={MC_PARAMS.pct_hw+'%'} color={MC_PARAMS.pct_hw > 90 ? C.crimson : C.gold} />
+              <Metric label="MEAN β_W" value={MC_STATS.mean.toFixed(2)} sub={'Median: '+MC_STATS.median.toFixed(2)} color={C.gold} />
+              <Metric label="90% CI" value={'['+MC_STATS.ci_lo.toFixed(2)+', '+MC_STATS.ci_hi.toFixed(2)+']'} sub={'Range: '+MC_STATS.min.toFixed(2)+'–'+MC_STATS.max.toFixed(2)} color={C.muted} />
+              <Metric label="% HOLLOW WIN" value={MC_STATS.pct_hw.toFixed(1)+'%'} sub={'β_W > 1 in all draws'} color={MC_STATS.pct_hw > 95 ? C.crimson : C.gold} />
+              <Metric label="% β_W > 3" value={MC_STATS.pct_above_3.toFixed(1)+'%'} color={MC_STATS.pct_above_3 > 90 ? C.crimson : C.gold} />
+              <Metric label="% β_W > 5" value={MC_STATS.pct_above_5.toFixed(1)+'%'} color={MC_STATS.pct_above_5 > 50 ? '#D97706' : C.gold} />
             </div>
-            {MC_PARAMS.channels && MC_PARAMS.channels.length > 0 && (
-              <div style={{padding:16,background:C.panel,border:`1px solid ${C.border}`,borderRadius:4}}>
-                <div style={{fontFamily:C.mono,fontSize:12,color:C.gold,marginBottom:8}}>DISTRIBUTION PARAMETERS</div>
-                <table style={{width:'100%',borderCollapse:'collapse',fontFamily:C.mono,fontSize:13}}>
-                  <thead><tr style={{borderBottom:`1px solid ${C.border}`}}>
-                    <th style={{padding:'6px 10px',textAlign:'left',color:C.gold}}>CHANNEL</th>
-                    <th style={{padding:'6px 10px',textAlign:'left',color:C.gold}}>DISTRIBUTION</th>
-                    <th style={{padding:'6px 10px',textAlign:'right',color:C.gold}}>LOW</th>
-                    <th style={{padding:'6px 10px',textAlign:'right',color:C.gold}}>HIGH</th>
-                  </tr></thead>
-                  <tbody>
-                    {MC_PARAMS.channels.map((ch,i) => (
-                      <tr key={i} style={{borderBottom:`1px solid rgba(255,255,255,0.04)`}}>
-                        <td style={{padding:'6px 10px',color:C.text}}>{ch.name}</td>
-                        <td style={{padding:'6px 10px',color:C.muted}}>{ch.dist}</td>
-                        <td style={{padding:'6px 10px',color:C.muted,textAlign:'right'}}>{ch.lo}</td>
-                        <td style={{padding:'6px 10px',color:C.muted,textAlign:'right'}}>{ch.hi}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+            <SectionTitle>Channel Welfare Contributions</SectionTitle>
+            <table style={{width:'100%',borderCollapse:'collapse',fontFamily:C.mono,fontSize:13}}>
+              <thead><tr style={{borderBottom:`1px solid ${C.border}`}}>
+                <th style={{padding:'8px 12px',textAlign:'left',color:C.gold}}>CHANNEL</th>
+                <th style={{padding:'8px 12px',textAlign:'right',color:C.gold}}>MEAN $B</th>
+                <th style={{padding:'8px 12px',textAlign:'right',color:C.gold}}>P5</th>
+                <th style={{padding:'8px 12px',textAlign:'right',color:C.gold}}>P50</th>
+                <th style={{padding:'8px 12px',textAlign:'right',color:C.gold}}>P95</th>
+                <th style={{padding:'8px 12px',textAlign:'right',color:C.gold}}>SHARE</th>
+              </tr></thead>
+              <tbody>
+                {MC_CHANNELS.map((ch,i) => (
+                  <tr key={i} style={{borderBottom:`1px solid rgba(255,255,255,0.04)`,background:i%2===0?C.panel:C.bg}}>
+                    <td style={{padding:'8px 12px',color:C.text,fontFamily:C.serif,fontSize:14}}>{ch.name}</td>
+                    <td style={{padding:'8px 12px',color:C.gold,textAlign:'right',fontWeight:600}}>{ch.mean.toFixed(1)}</td>
+                    <td style={{padding:'8px 12px',color:C.muted,textAlign:'right'}}>{ch.p5.toFixed(1)}</td>
+                    <td style={{padding:'8px 12px',color:C.muted,textAlign:'right'}}>{ch.p50.toFixed(1)}</td>
+                    <td style={{padding:'8px 12px',color:C.muted,textAlign:'right'}}>{ch.p95.toFixed(1)}</td>
+                    <td style={{padding:'8px 12px',color:C.muted,textAlign:'right'}}>{(ch.share*100).toFixed(1)}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div style={{marginTop:16,padding:12,background:'rgba(245,158,11,0.06)',border:`1px solid rgba(245,158,11,0.15)`,borderRadius:4}}>
+              <div style={{fontFamily:C.mono,fontSize:11,color:C.muted}}>Total welfare cost: <span style={{color:C.gold}}>${MC_WELFARE.mean.toFixed(1)}B</span> (90% CI: ${MC_WELFARE.ci_lo.toFixed(1)}B – ${MC_WELFARE.ci_hi.toFixed(1)}B) · Source: sapm_monte_carlo.py (seed=42)</div>
+            </div>
+          </div>
+        )}
+
           </div>
         )}
 
