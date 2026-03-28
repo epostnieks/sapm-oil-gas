@@ -1,5 +1,5 @@
 // PSTOilGas.jsx
-// Postnieks Impossibility Program — SAPM Companion Dashboard
+// Erik Postnieks © 2026 — SAPM Companion Dashboard
 // Bloomberg terminal aesthetic: JetBrains Mono + Newsreader, navy/gold/crimson/green
 // Drop into Next.js: pages/dashboards/PSTOilGas.jsx  (or app/dashboards/PSTOilGas/page.jsx)
 // Dependencies: none (pure React + inline styles)
@@ -156,7 +156,7 @@ export default function PSTOilGasDashboard() {
       {/* Header */}
       <div style={{background:C.panel,borderBottom:`2px solid ${C.gold}`,padding:'14px 24px',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
         <div>
-          <div style={{fontFamily:C.mono,fontSize:11,color:C.muted,letterSpacing:2,marginBottom:4}}>POSTNIEKS IMPOSSIBILITY PROGRAM · SAPM</div>
+          <div style={{fontFamily:C.mono,fontSize:11,color:C.muted,letterSpacing:2,marginBottom:4}}>ERIK POSTNIEKS · SAPM</div>
           <div style={{fontFamily:C.serif,fontSize:24,fontWeight:700,color:C.text}}>{META.title}</div>
           {META.subtitle && <div style={{fontFamily:C.serif,fontSize:15,color:C.muted,marginTop:2,fontStyle:'italic'}}>{META.subtitle}</div>}
         </div>
@@ -455,7 +455,7 @@ export default function PSTOilGasDashboard() {
             <div style={{padding:16,background:'rgba(245,158,11,0.06)',border:`1px solid rgba(245,158,11,0.15)`,borderRadius:4}}>
               <div style={{fontFamily:C.mono,fontSize:12,color:C.gold,marginBottom:8}}>CITATION</div>
               <div style={{fontFamily:C.serif,fontSize:14,color:C.text,lineHeight:1.6}}>
-                Postnieks, E. (2026). System Asset Pricing Model: {META.title}. SAPM Working Paper. Wooster LLC.
+                Postnieks, E. (2026). System Asset Pricing Model: {META.title}. SAPM Working Paper.
               </div>
             </div>
           </div>
@@ -578,7 +578,7 @@ export default function PSTOilGasDashboard() {
 
       {/* Footer */}
       <div style={{background:C.panel,borderTop:`1px solid ${C.border}`,padding:'10px 24px',display:'flex',justifyContent:'space-between',alignItems:'center',marginTop:40}}>
-        <div style={{fontFamily:C.mono,fontSize:11,color:C.muted}}>Erik Postnieks · Wooster LLC · Postnieks Impossibility Program</div>
+        <div style={{fontFamily:C.mono,fontSize:11,color:C.muted}}>Erik Postnieks · © 2026 Erik Postnieks · © 2026 Erik Postnieks</div>
         <div style={{fontFamily:C.mono,fontSize:11,color:C.muted}}>SAPM Working Paper · 2026</div>
       </div>
     <SAPMNav />
