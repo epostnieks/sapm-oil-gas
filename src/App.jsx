@@ -60,9 +60,9 @@ const CROSS_DOMAIN = [
 ];
 
 const HIGHLIGHTS = [
-        "β_W = 6.2 [5.1–7.6]: each $1 of O&G private payoff destroys $6.20 in system welfare. System-adjusted payoff: −$18.2T/yr.",
+        "βW = 6.2 [5.1–7.6]: each $1 of O&G private payoff destroys $6.20 in system welfare. System-adjusted payoff: −$18.2T/yr.",
         "Hollowness deepened by documented informational sabotage: Exxon's internal models predicted 0.20°C/decade while public communications emphasized \"uncertainty.\"",
-        "Cooperative baseline Π_C = $350B/yr (~10% of current $3.5T). Remaining activity at cooperative baseline: petrochemical feedstocks + abated gas for hydrogen.",
+        "Cooperative baseline Πᶜ = $350B/yr (~10% of current $3.5T). Remaining activity at cooperative baseline: petrochemical feedstocks + abated gas for hydrogen.",
         "Slow Hollow Win: CO₂ channel (51% of costs) operates on multi-decadal to centennial timescale. Today's emissions cause damages peaking decades hence.",
         "Stranded-asset channel: $1.4T in upstream O&G assets at risk under 1.5°C scenarios. Pension funds holding equities bear this risk with no disclosure.",
         "EV penetration race: China 90%+ NEV by 2034; Europe 95% by 2041; U.S. delayed to 50% by 2039 (tariffs + tax credit elimination).",
@@ -320,7 +320,7 @@ export default function PSTOilGasDashboard() {
                   <th style={{padding:'8px 12px',textAlign:'left',color:C.gold}}>CAPM ANALOGUE</th>
                 </tr></thead>
                 <tbody>
-                  {[['β_W (System Beta)','β (Market Beta)'],['PSF (Private-Systemic Frontier)','SML (Security Market Line)'],[<>μ* (Shadow Price)</>,<>r<sub>f</sub> (Risk-Free Rate)</>],['Πˢᵃ (System-Adjusted Payoff)','α (Jensen\'s Alpha)'],['W (System Welfare)','No equivalent — structurally invisible'],[<>𝒮<sub>W</sub> (Welfare Efficiency)</>,<>Sharpe Ratio</>]].map(([s,c],i) => (
+                  {[[<>β<sub>W</sub> (System Beta)</>,<>β (Market Beta)</>],['PSF (Private-Systemic Frontier)','SML (Security Market Line)'],[<>μ* (Shadow Price)</>,<>r<sub>f</sub> (Risk-Free Rate)</>],['Πˢᵃ (System-Adjusted Payoff)','α (Jensen\'s Alpha)'],['W (System Welfare)','No equivalent — structurally invisible'],[<>𝒮<sub>W</sub> (Welfare Efficiency)</>,<>Sharpe Ratio</>]].map(([s,c],i) => (
                     <tr key={i} style={{borderBottom:`1px solid rgba(255,255,255,0.04)`}}>
                       <td style={{padding:'8px 12px',color:C.text}}>{s}</td>
                       <td style={{padding:'8px 12px',color:C.muted,fontFamily:C.serif}}>{c}</td>
@@ -477,7 +477,7 @@ export default function PSTOilGasDashboard() {
       </div>
 
       
-      {/* 𝒮_W WELFARE EFFICIENCY RATIO */}
+      {/* 𝒮W WELFARE EFFICIENCY RATIO */}
       <div style={{padding:"24px",background:C.panel,border:"2px solid #D9770640",borderRadius:4,margin:"24px 0"}}>
         <div style={{fontFamily:C.mono,fontSize:12,color:"#D97706",letterSpacing:2,marginBottom:16}}>WELFARE EFFICIENCY RATIO</div>
         <div style={{display:"flex",alignItems:"baseline",gap:12,marginBottom:12}}>
