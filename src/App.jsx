@@ -5,6 +5,7 @@
 // Dependencies: none (pure React + inline styles)
 
 import { useState } from 'react';
+import SAPMNav from "./SAPMNav";
 
 // ─── Data ─────────────────────────────────────────────────────────────────
 const META = {
@@ -277,6 +278,7 @@ export default function PSTOilGasDashboard() {
         <div style={{fontFamily:C.mono,fontSize:9,color:C.muted}}>Erik Postnieks · Wooster LLC · Postnieks Impossibility Program</div>
         <div style={{fontFamily:C.mono,fontSize:9,color:C.muted}}>SAPM Working Paper · 2026</div>
       </div>
-    </div>
+    <SAPMNav />
+      </div>
   );
 }
