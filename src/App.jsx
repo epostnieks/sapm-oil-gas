@@ -162,7 +162,7 @@ export default function PSTOilGasDashboard() {
         </div>
         <div style={{textAlign:'right'}}>
           <div style={{fontFamily:C.mono,fontSize:11,color:C.muted,letterSpacing:1}}>SYSTEM BETA</div>
-          <div style={{fontFamily:C.mono,fontSize:36,fontWeight:700,color:C.gold,lineHeight:1}}>β_W = {META.beta}</div>
+          <div style={{fontFamily:C.mono,fontSize:36,fontWeight:700,color:C.gold,lineHeight:1}}>β<sub>W</sub> = {META.beta}</div>
           {META.ci && <div style={{fontFamily:C.mono,fontSize:11,color:C.muted}}>90% CI [{META.ci}]</div>}
         </div>
       </div>
@@ -188,9 +188,9 @@ export default function PSTOilGasDashboard() {
           <div>
             {/* Key metrics row */}
             <div style={{display:'flex',gap:12,flexWrap:'wrap',marginBottom:16}}>
-              <Metric label="β_W  (System Beta)" value={META.beta} sub={META.ci ? `90% CI [${META.ci}]` : 'Headline estimate'} color={C.gold} />
+              <Metric label={<>β<sub>W</sub>  (System Beta)</>} value={META.beta} sub={META.ci ? `90% CI [${META.ci}]` : 'Headline estimate'} color={C.gold} />
               {META.pi && <Metric label="Private Payoff Π" value={META.pi+'/yr'} sub="Private sector capture" color={C.text} />}
-              {META.psa && <Metric label="System-Adj. Payoff Π_SA" value={META.psa} sub="β_W · Π − W" color={C.crimson} />}
+              {META.psa && <Metric label={<>System-Adj. Payoff Π<sub>SA</sub></>} value={META.psa} sub={<>β<sub>W</sub> · Π − W</>} color={C.crimson} />}
               {META.mu && <Metric label="Break-Even μ*" value={META.mu} sub="Welfare neutrality threshold" color={'#22C55E'} />}
               {META.kappa && <Metric label="PSF Curvature κ" value={META.kappa} sub="Pareto shortfall index" color={C.muted} />}
             </div>
@@ -224,7 +224,7 @@ export default function PSTOilGasDashboard() {
                 <tr style={{background:C.thead}}>
                   <th style={{padding:'8px 12px',textAlign:'left',color:C.gold,borderBottom:`1px solid ${C.border}`}}>#</th>
                   <th style={{padding:'8px 12px',textAlign:'left',color:C.gold,borderBottom:`1px solid ${C.border}`}}>Channel</th>
-                  <th style={{padding:'8px 12px',textAlign:'right',color:C.gold,borderBottom:`1px solid ${C.border}`}}>β_W(i)</th>
+                  <th style={{padding:'8px 12px',textAlign:'right',color:C.gold,borderBottom:`1px solid ${C.border}`}}>β<sub>W</sub>(i)</th>
                   <th style={{padding:'8px 12px',textAlign:'right',color:C.gold,borderBottom:`1px solid ${C.border}`}}>δ_i ($/yr)</th>
                   <th style={{padding:'8px 12px',textAlign:'right',color:C.gold,borderBottom:`1px solid ${C.border}`}}>Weight</th>
                 </tr>
@@ -240,7 +240,7 @@ export default function PSTOilGasDashboard() {
                   </tr>
                 ))}
                 <tr style={{background:C.thead}}>
-                  <td colSpan={2} style={{padding:'10px 12px',color:C.gold,fontWeight:700,fontSize:14}}>AGGREGATE β_W</td>
+                  <td colSpan={2} style={{padding:'10px 12px',color:C.gold,fontWeight:700,fontSize:14}}>AGGREGATE β<sub>W</sub></td>
                   <td colSpan={3} style={{padding:'10px 12px',color:C.gold,fontWeight:700,fontSize:16,textAlign:'right'}}>{META.beta}</td>
                 </tr>
               </tbody>
@@ -268,7 +268,7 @@ export default function PSTOilGasDashboard() {
               <thead>
                 <tr style={{background:C.thead}}>
                   <th style={{padding:'8px 12px',textAlign:'left',color:C.gold,borderBottom:`1px solid ${C.border}`}}>Domain</th>
-                  <th style={{padding:'8px 12px',textAlign:'right',color:C.gold,borderBottom:`1px solid ${C.border}`}}>β_W</th>
+                  <th style={{padding:'8px 12px',textAlign:'right',color:C.gold,borderBottom:`1px solid ${C.border}`}}>β<sub>W</sub></th>
                   <th style={{padding:'8px 12px',textAlign:'left',color:C.gold,borderBottom:`1px solid ${C.border}`}}>PST Type</th>
                   <th style={{padding:'8px 12px',textAlign:'right',color:C.gold,borderBottom:`1px solid ${C.border}`}}>Π ($/yr)</th>
                 </tr>
@@ -302,14 +302,14 @@ export default function PSTOilGasDashboard() {
                   <YAxis stroke={C.muted} tick={{fontFamily:C.mono,fontSize:11}} label={{value:"W (System Welfare)",angle:-90,position:"insideLeft",fill:C.muted,fontFamily:C.mono,fontSize:11}} />
                   <Tooltip contentStyle={{background:C.panel,border:`1px solid ${C.border}`,fontFamily:C.mono,fontSize:12,color:C.text}} />
                   <Area type="monotone" dataKey="w" stroke={C.gold} fill="rgba(245,158,11,0.15)" strokeWidth={2} />
-                  <ReferenceLine x={PSF_PARAMS.pi_c} stroke={C.green} strokeDasharray="5 5" label={{value:"Π_C",fill:C.green,fontFamily:C.mono,fontSize:11}} />
+                  <ReferenceLine x={PSF_PARAMS.pi_c} stroke={C.green} strokeDasharray="5 5" label={{value:"Πᶜ",fill:C.green,fontFamily:C.mono,fontSize:11}} />
                   <ReferenceLine x={PSF_PARAMS.pi_p} stroke={C.crimson} strokeDasharray="5 5" label={{value:"Current",fill:C.crimson,fontFamily:C.mono,fontSize:11}} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
             <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-              <Metric label="COOPERATIVE PAYOFF Π_C" value={'$'+PSF_PARAMS.pi_c+'B'} sub="Welfare-maximizing extraction" color={C.green} />
-              <Metric label="CURRENT PAYOFF Π_P" value={'$'+PSF_PARAMS.pi_p+'B'} sub="Actual private extraction" color={C.crimson} />
+              <Metric label={<>COOPERATIVE PAYOFF Π<sub>C</sub></>} value={'$'+PSF_PARAMS.pi_c+'B'} sub="Welfare-maximizing extraction" color={C.green} />
+              <Metric label={<>CURRENT PAYOFF Π<sub>P</sub></>} value={'$'+PSF_PARAMS.pi_p+'B'} sub="Actual private extraction" color={C.crimson} />
               <Metric label="OVER-EXTRACTION" value={'$'+(PSF_PARAMS.pi_p - PSF_PARAMS.pi_c)+'B'} sub="Gap driving welfare loss" color={C.gold} />
             </div>
             <div style={{marginTop:16,padding:16,background:C.panel,border:`1px solid ${C.border}`,borderRadius:4}}>
@@ -320,7 +320,7 @@ export default function PSTOilGasDashboard() {
                   <th style={{padding:'8px 12px',textAlign:'left',color:C.gold}}>CAPM ANALOGUE</th>
                 </tr></thead>
                 <tbody>
-                  {[['β_W (System Beta)','β (Market Beta)'],['PSF (Private-Systemic Frontier)','SML (Security Market Line)'],['μ* (Shadow Price)','r_f (Risk-Free Rate)'],['Πˢᵃ (System-Adjusted Payoff)','α (Jensen\'s Alpha)'],['W (System Welfare)','No equivalent — structurally invisible'],['𝒮_W (Welfare Efficiency)','Sharpe Ratio']].map(([s,c],i) => (
+                  {[['β_W (System Beta)','β (Market Beta)'],['PSF (Private-Systemic Frontier)','SML (Security Market Line)'],[<>μ* (Shadow Price)</>,<>r<sub>f</sub> (Risk-Free Rate)</>],['Πˢᵃ (System-Adjusted Payoff)','α (Jensen\'s Alpha)'],['W (System Welfare)','No equivalent — structurally invisible'],[<>𝒮<sub>W</sub> (Welfare Efficiency)</>,<>Sharpe Ratio</>]].map(([s,c],i) => (
                     <tr key={i} style={{borderBottom:`1px solid rgba(255,255,255,0.04)`}}>
                       <td style={{padding:'8px 12px',color:C.text}}>{s}</td>
                       <td style={{padding:'8px 12px',color:C.muted,fontFamily:C.serif}}>{c}</td>
@@ -348,11 +348,11 @@ export default function PSTOilGasDashboard() {
               </ResponsiveContainer>
             </div>
             <div style={{display:'flex',gap:12,flexWrap:'wrap',marginBottom:16}}>
-              <Metric label="MEAN β_W" value={MC_STATS.mean.toFixed(2)} sub={'Median: '+MC_STATS.median.toFixed(2)} color={C.gold} />
+              <Metric label={<>MEAN β<sub>W</sub></>} value={MC_STATS.mean.toFixed(2)} sub={'Median: '+MC_STATS.median.toFixed(2)} color={C.gold} />
               <Metric label="90% CI" value={'['+MC_STATS.ci_lo.toFixed(2)+', '+MC_STATS.ci_hi.toFixed(2)+']'} sub={'Range: '+MC_STATS.min.toFixed(2)+'–'+MC_STATS.max.toFixed(2)} color={C.muted} />
-              <Metric label="% HOLLOW WIN" value={MC_STATS.pct_hw.toFixed(1)+'%'} sub={'β_W > 1 in all draws'} color={MC_STATS.pct_hw > 95 ? C.crimson : C.gold} />
-              <Metric label="% β_W > 3" value={MC_STATS.pct_above_3.toFixed(1)+'%'} color={MC_STATS.pct_above_3 > 90 ? C.crimson : C.gold} />
-              <Metric label="% β_W > 5" value={MC_STATS.pct_above_5.toFixed(1)+'%'} color={MC_STATS.pct_above_5 > 50 ? '#D97706' : C.gold} />
+              <Metric label="% HOLLOW WIN" value={MC_STATS.pct_hw.toFixed(1)+'%'} sub={<>β<sub>W</sub> &gt; 1 in all draws</>} color={MC_STATS.pct_hw > 95 ? C.crimson : C.gold} />
+              <Metric label={<>% β<sub>W</sub> &gt; 3</>} value={MC_STATS.pct_above_3.toFixed(1)+'%'} color={MC_STATS.pct_above_3 > 90 ? C.crimson : C.gold} />
+              <Metric label={<>% β<sub>W</sub> &gt; 5</>} value={MC_STATS.pct_above_5.toFixed(1)+'%'} color={MC_STATS.pct_above_5 > 50 ? '#D97706' : C.gold} />
             </div>
             <SectionTitle>Channel Welfare Contributions</SectionTitle>
             <table style={{width:'100%',borderCollapse:'collapse',fontFamily:C.mono,fontSize:13}}>
@@ -481,7 +481,7 @@ export default function PSTOilGasDashboard() {
       <div style={{padding:"24px",background:C.panel,border:"2px solid #D9770640",borderRadius:4,margin:"24px 0"}}>
         <div style={{fontFamily:C.mono,fontSize:12,color:"#D97706",letterSpacing:2,marginBottom:16}}>WELFARE EFFICIENCY RATIO</div>
         <div style={{display:"flex",alignItems:"baseline",gap:12,marginBottom:12}}>
-          <span style={{fontFamily:C.mono,fontSize:42,fontWeight:700,color:"#D97706"}}>𝒮_W = 0.16</span>
+          <span style={{fontFamily:C.mono,fontSize:42,fontWeight:700,color:"#D97706"}}>𝒮<sub>W</sub> = 0.16</span>
         </div>
         <div style={{fontFamily:C.mono,fontSize:13,color:C.muted,marginBottom:16}}>
           S&P 500 long-run Sharpe ≈ 0.40 &nbsp;|&nbsp; Acceptable ≥ 0.30 &nbsp;|&nbsp; Poor &lt; 0.10
@@ -509,18 +509,18 @@ export default function PSTOilGasDashboard() {
             </thead>
             <tbody>
               <tr style={{borderBottom:"1px solid rgba(255,255,255,0.06)"}}>
-                <td style={{padding:"10px",color:C.gold,fontWeight:600}}>β_W</td>
+                <td style={{padding:"10px",color:C.gold,fontWeight:600}}>β<sub>W</sub></td>
                 <td style={{padding:"10px",color:C.text}}>beta-W</td>
-                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>How much social welfare this sector destroys per dollar of private gain. β_W = 5.0 means $5 of welfare destroyed per $1 earned.</td>
+                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>How much social welfare this sector destroys per dollar of private gain. β<sub>W</sub> = 5.0 means $5 of welfare destroyed per $1 earned.</td>
                 <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>β (market beta) — measures how much an asset moves with the market</td>
-                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>In CAPM, high beta means high financial risk. In SAPM, high β_W means high welfare destruction per dollar of revenue.</td>
+                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>In CAPM, high beta means high financial risk. In SAPM, high β<sub>W</sub> means high welfare destruction per dollar of revenue.</td>
               </tr>
               <tr style={{borderBottom:"1px solid rgba(255,255,255,0.06)"}}>
-                <td style={{padding:"10px",color:C.gold,fontWeight:600}}>𝒮_W</td>
+                <td style={{padding:"10px",color:C.gold,fontWeight:600}}>𝒮<sub>W</sub></td>
                 <td style={{padding:"10px",color:C.text}}>S-W</td>
                 <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>Private gain per dollar of system welfare cost. Higher is better — but in PST domains it is always low.</td>
                 <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>Sharpe Ratio — return per unit of risk</td>
-                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>S&P 500 long-run Sharpe ≈ 0.40. A Sharpe of 0.10 is poor. VW Dieselgate: 𝒮_W = 0.12. LIBOR: 𝒮_W ≈ 0. ERCOT: 𝒮_W = 0.0005. These are welfare efficiency ratios of industries that GDP calls productive.</td>
+                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>S&P 500 long-run Sharpe ≈ 0.40. A Sharpe of 0.10 is poor. VW Dieselgate: 𝒮<sub>W</sub> = 0.12. LIBOR: 𝒮<sub>W</sub> ≈ 0. ERCOT: 𝒮<sub>W</sub> = 0.0005. These are welfare efficiency ratios of industries that GDP calls productive.</td>
               </tr>
               <tr style={{borderBottom:"1px solid rgba(255,255,255,0.06)"}}>
                 <td style={{padding:"10px",color:C.gold,fontWeight:600}}>T*</td>
@@ -532,9 +532,9 @@ export default function PSTOilGasDashboard() {
               <tr style={{borderBottom:"1px solid rgba(255,255,255,0.06)"}}>
                 <td style={{padding:"10px",color:C.gold,fontWeight:600}}>μ*</td>
                 <td style={{padding:"10px",color:C.text}}>mu-star</td>
-                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>The efficient price of system welfare — what it would cost to make the deal system-preserving. μ* = 1/β_W. Derived from frontier geometry, not assigned by an analyst.</td>
+                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>The efficient price of system welfare — what it would cost to make the deal system-preserving. μ* = 1/β<sub>W</sub>. Derived from frontier geometry, not assigned by an analyst.</td>
                 <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>Closest to the risk-free rate as a floor price for risk</td>
-                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>β_W = 7.4 → μ* ≈ 0.135. β_W = 35.2 → μ* ≈ 0.028. Lower μ* means cheaper welfare preservation in theory — PST means it never happens without intervention.</td>
+                <td style={{padding:"10px",color:C.muted,fontFamily:C.serif}}>β<sub>W</sub> = 7.4 → μ* ≈ 0.135. β<sub>W</sub> = 35.2 → μ* ≈ 0.028. Lower μ* means cheaper welfare preservation in theory — PST means it never happens without intervention.</td>
               </tr>
               <tr style={{borderBottom:"1px solid rgba(255,255,255,0.06)"}}>
                 <td style={{padding:"10px",color:C.gold,fontWeight:600}}>Πˢᵃ</td>
