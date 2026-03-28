@@ -70,16 +70,16 @@ const HIGHLIGHTS = [
 
 // ─── Color palette ───────────────────────────────────────────────────────────
 const C = {
-  bg:      '#0a1628',
-  panel:   '#0d1f3c',
-  border:  '#1e3a5f',
-  navy:    '#1F3864',
-  gold:    '#c9a84c',
-  crimson: '#a52a2a',
-  green:   '#2a7a3a',
-  text:    '#e0e8f0',
-  muted:   '#7a9ab8',
-  thead:   '#111f38',
+  bg:      '#0D0D0D',
+  panel:   '#1A1A1A',
+  border:  'rgba(255,255,255,0.08)',
+  navy:    '#1A1A1A',
+  gold:    '#F59E0B',
+  crimson: '#EF4444',
+  green:   '#22C55E',
+  text:    '#F5F0E8',
+  muted:   'rgba(255,255,255,0.4)',
+  thead:   '#141414',
   mono:    "'JetBrains Mono', 'Fira Code', monospace",
   serif:   "'Newsreader', 'Georgia', serif",
 };
@@ -105,9 +105,9 @@ function SectionTitle({ children }) {
 
 function BetaBar({ beta, max }) {
   const pct = Math.min(100, (parseFloat(beta)||0) / (max||15) * 100);
-  const color = pct > 80 ? C.crimson : pct > 50 ? '#b8860b' : C.gold;
+  const color = pct > 80 ? C.crimson : pct > 50 ? '#D97706' : C.gold;
   return (
-    <div style={{background:'#071020',borderRadius:2,height:8,flex:1,margin:'0 8px'}}>
+    <div style={{background:'rgba(255,255,255,0.04)',borderRadius:2,height:8,flex:1,margin:'0 8px'}}>
       <div style={{width:`${pct}%`,height:'100%',background:color,borderRadius:2,transition:'width 0.4s'}} />
     </div>
   );
@@ -149,8 +149,8 @@ export default function PSTOilGasDashboard() {
       </div>
 
       {/* PST badge + type */}
-      <div style={{background:'#070e1a',padding:'8px 24px',display:'flex',gap:10,alignItems:'center',borderBottom:`1px solid ${C.border}`}}>
-        <span style={{background:'#1a3a1a',color:'#aaffaa',fontSize:10,padding:'3px 8px',borderRadius:2,fontFamily:'JetBrains Mono,monospace',letterSpacing:0.5}}>INSTITUTIONAL PST</span>
+      <div style={{background:'rgba(245,158,11,0.06)',padding:'8px 24px',display:'flex',gap:10,alignItems:'center',borderBottom:`1px solid ${C.border}`}}>
+        <span style={{background:'rgba(34,197,94,0.15)',color:'#22C55E',fontSize:10,padding:'3px 8px',borderRadius:2,fontFamily:'JetBrains Mono,monospace',letterSpacing:0.5}}>INSTITUTIONAL PST</span>
         <span style={{fontFamily:C.mono,fontSize:10,color:C.muted}}>{META.type}</span>
         {META.companion && <a href={META.companion} target="_blank" rel="noreferrer" style={{marginLeft:'auto',fontFamily:C.mono,fontSize:9,color:C.gold,textDecoration:'none'}}>↗ Companion Dashboard</a>}
       </div>
@@ -172,7 +172,7 @@ export default function PSTOilGasDashboard() {
               <Metric label="β_W  (System Beta)" value={META.beta} sub={META.ci ? `90% CI [${META.ci}]` : 'Headline estimate'} color={C.gold} />
               {META.pi && <Metric label="Private Payoff Π" value={META.pi+'/yr'} sub="Private sector capture" color={C.text} />}
               {META.psa && <Metric label="System-Adj. Payoff Π_SA" value={META.psa} sub="β_W · Π − W" color={C.crimson} />}
-              {META.mu && <Metric label="Break-Even μ*" value={META.mu} sub="Welfare neutrality threshold" color={'#5a9a5a'} />}
+              {META.mu && <Metric label="Break-Even μ*" value={META.mu} sub="Welfare neutrality threshold" color={'#22C55E'} />}
               {META.kappa && <Metric label="PSF Curvature κ" value={META.kappa} sub="Pareto shortfall index" color={C.muted} />}
             </div>
 
@@ -244,8 +244,8 @@ export default function PSTOilGasDashboard() {
               </thead>
               <tbody>
                 {[...CROSS_DOMAIN].sort((a,b) => (parseFloat(b.beta)||0) - (parseFloat(a.beta)||0)).map((d,i) => (
-                  <tr key={i} style={{background: d.domain===META.title ? '#0d2a10' : i%2===0 ? C.panel : C.bg}}>
-                    <td style={{padding:'8px 12px',color: d.domain===META.title ? '#80ff80' : C.text,fontFamily:C.serif,fontSize:12,borderBottom:`1px solid ${C.border}`}}>
+                  <tr key={i} style={{background: d.domain===META.title ? 'rgba(34,197,94,0.08)' : i%2===0 ? C.panel : C.bg}}>
+                    <td style={{padding:'8px 12px',color: d.domain===META.title ? '#22C55E' : C.text,fontFamily:C.serif,fontSize:12,borderBottom:`1px solid ${C.border}`}}>
                       {d.domain===META.title ? '▶ ' : ''}{d.domain}
                     </td>
                     <td style={{padding:'8px 12px',color: parseFloat(d.beta)>10 ? C.crimson : C.gold,textAlign:'right',fontWeight:700,borderBottom:`1px solid ${C.border}`}}>{d.beta}</td>
